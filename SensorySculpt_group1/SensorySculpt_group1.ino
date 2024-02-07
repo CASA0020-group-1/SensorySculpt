@@ -5,10 +5,11 @@
 LiquidCrystal_I2C lcd (0x3f, 20, 4);
 Servo servo;
  
- 
 #define SENSOR_PIN A0
 #define SERVO_PIN 8
- 
+
+float mapFloat(float x, float in_min, float in_max, float out_min, float out_max);
+
 void setup ()
 {
   pinMode(SENSOR_PIN, INPUT);
@@ -55,18 +56,12 @@ void loop ()
     lcd.setCursor(0, 1);
     lcd.print("Status: Work");
     // servo mode: circular
-    for (int angle = 0; angle <= 180; angle += 1)
-    {
-      servo.write(angle);
+    
+      servo.write(179);
       //delay(15);
     }
-    for (int angle = 180; angle >= 0; angle -= 1)
-    {
-      servo.write(angle);
-      //delay(15);
-    }
+   
 
-  }
   else if (db >= 59)
   {
     lcd.setCursor(0, 1);
