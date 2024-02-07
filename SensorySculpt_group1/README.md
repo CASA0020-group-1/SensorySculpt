@@ -1,2 +1,1 @@
-SensorySculpt
-====  
+# SensorySculpt
