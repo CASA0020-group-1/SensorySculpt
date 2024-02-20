@@ -49,15 +49,23 @@ void loop() {
   lcd.print(db,1);
   lcd.print("dB");
 
-  if (db < 45)
+  if (db < 50)
   {
     lcd.setCursor(0, 1);
     lcd.print("Status: Rest");
     // servo mode: stopped
-    servo.write(80); 
-    delay(30);
+    
+    servo1.write(90);
+    
+
+    int pulseWidth = map(db, 40, 50, 90, 120);
+
+    // 控制伺服电机
+    servo.write(pulseWidth);
+    
+    delay(1300);
   }
-  else if (db >= 45 && db < 59)
+  else if (db >= 50 && db < 59)
   {
     lcd.setCursor(0, 1);
     lcd.print("Status: Work");
