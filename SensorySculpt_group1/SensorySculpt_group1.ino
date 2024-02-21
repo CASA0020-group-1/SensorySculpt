@@ -43,7 +43,7 @@ void loop ()
   lcd.print(db,1);
   lcd.print("dB");
   
-  if (db < 45)
+  if (db < 80)
   {
     lcd.setCursor(0, 1);
     lcd.print("Status: Rest");
@@ -51,7 +51,7 @@ void loop ()
     servo.writeMicroseconds(1500); 
     delay(30);
   }
-  else if (db >= 45 && db < 59)
+  /*else if (db >= 45 && db < 59)
   {
     lcd.setCursor(0, 1);
     lcd.print("Status: Work");
@@ -70,7 +70,7 @@ void loop ()
     int randomAngle = random(0, 180);
     servo.write(randomAngle);
     delay(30); 
-  }
+  }*/
   
   delay(1800);
   lcd.clear();

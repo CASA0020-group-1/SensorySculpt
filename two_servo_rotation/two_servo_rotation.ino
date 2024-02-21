@@ -49,7 +49,7 @@ void loop() {
   lcd.print(db,1);
   lcd.print("dB");
 
-  if (db < 50)
+  if (db < 80)
   {
     lcd.setCursor(0, 1);
     lcd.print("Status: Rest");
@@ -58,14 +58,20 @@ void loop() {
     servo1.write(90);
     
 
-    int pulseWidth = map(db, 40, 50, 90, 120);
+    int pulseWidthForward = map(db, 40, 80, 90, 120); // 正转速度控制
+    servo.write(pulseWidthForward);
+    int delayTime = calculateDelayTime(db, true); // 计算正转所需时间
+    serial.println(delayTime);
+    delay(delayTime);
 
-    // 控制伺服电机
-    servo.write(pulseWidth);
+    int pulseWidthBackward = map(db, 40, 80, 90, 60); // 反转速度控制
+    servo.write(pulseWidthBackward);
+    delayTime = calculateDelayTime(db, false); // 计算反转所需时间
+    delay(delayTime);
     
     delay(1300);
   }
-  else if (db >= 50 && db < 59)
+ /* else if (db >= 50 && db < 59)
   {
     lcd.setCursor(0, 1);
     lcd.print("Status: Work");
@@ -95,7 +101,7 @@ void loop() {
     servo.write(randomAngle);
     delay(30); 
   }
-
+*/
   // put your main code here, to run repeatedly:
   
 }
