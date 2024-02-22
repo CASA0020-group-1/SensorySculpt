@@ -9,7 +9,7 @@
 
 #define SENSOR_PIN A3
 
-Adafruit_LiquidCrystal lcd(0x3f, 16, 2);
+Adafruit_LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 Servo servo;
 Servo servo1;
 
@@ -29,7 +29,7 @@ HttpClient http(wifiClient, URL, 80);
 float mapFloat(float x, float in_min, float in_max, float out_min, float out_max);
 
 void setup() {
-
+  Serial.begin(115200);
   startWifi();
 
   //Set pins
@@ -37,46 +37,36 @@ void setup() {
 
   servo.attach(A0);
   servo1.attach(A1);
-  Serial.begin(115200);
+  
   servo.writeMicroseconds(1480);
 
   //LCD dispkay
+  lcd.begin(16,2);
   lcd.setBacklight(HIGH);
   lcd.clear();
 }
 
 void loop() {
-  readapi();
-  // read sensor voltage
+  
+  // Calculate noise sensor value to db
   int sensorValue = analogRead(SENSOR_PIN);
-  // map sensor voltage value range from 0~1023 to 0~5
-  float voltage = sensorValue * (5.0 / 1023.0);
+  float voltage = sensorValue * (5.0 / 1023.0); // map sensor voltage value range from 0~1023 to 0~5
+  float mappedVoltage = mapFloat(voltage, 0.0, 5.0, 0.6, 2.6); // map sensor voltage value range from 0~5 to 0.6~2.6
+  float db = mapFloat(mappedVoltage, 0.6, 2.6, 30.0, 130.0); // map sensor voltage value from 0.6~2.6V to 30~130db
 
-  // map sensor voltage value range from 0~5 to 0.6~2.6
-  float mappedVoltage = mapFloat(voltage, 0.0, 5.0, 0.6, 2.6);
-
-  // map sensor voltage value from 0.6~2.6V to 30~130db
-  float db = mapFloat(mappedVoltage, 0.6, 2.6, 30.0, 130.0);
-
-
+  //lcd print
   lcd.setCursor(0, 0);
   lcd.print("Loudness: ");
-
-
-  Serial.println(sensorValue);
-  Serial.println("db");
+  Serial.println("db:");
   Serial.println(db);
   lcd.print(db, 1);
   lcd.print("dB");
 
+  //rotation function
   if (db < 58) {
     lcd.setCursor(0, 1);
     lcd.print("Status: Rest");
-    // servo mode: stopped
-
-
-
-    servo.writeMicroseconds(1402);
+    servo.writeMicroseconds(1402);// servo mode: stopped
     delay(3840);
     servo.writeMicroseconds(1483);
     delay(2000);
@@ -102,8 +92,6 @@ void loop() {
     servo1.write(90);
     delay(1000);
   }
-
-
   else if (db >= 59) {
     lcd.setCursor(0, 1);
     lcd.print("Status: Noisy");
@@ -118,13 +106,14 @@ void loop() {
     servo1.write(randomAngle);
     delay(30);
   }
-
-  // put your main code here, to run repeatedly:
+  readapi();
 }
+
 
 float mapFloat(float x, float in_min, float in_max, float out_min, float out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
+
 
 void startWifi() {
   // We start by connecting to a WiFi network
@@ -146,13 +135,14 @@ void startWifi() {
 
 void readapi() {
   if (WiFi.status() == WL_CONNECTED) {
-    String URL = "/data/2.5/weather?";  // 请根据实际API路径调整
-    String apiKey = "你的API密钥";      // 替换成你的API Key
-    String lat = "纬度";                // 替换成实际的纬度
-    String lon = "经度";                // 替换成实际的经度
+   
+        
+    String lat = "51.6116402309989";               
+    String lon = "-0.12889632674983237";               
 
-    // 组装完整的URL
-    String finalURL = URL + "lat=" + lat + "&lon=" + lon + "&units=metric&appid=" + apiKey;
+
+    String finalURL = URL + "lat=" + lat + "&lon=" + lon + "&units=metric&appid=" + ApiKey;
+    Serial.println(finalURL);
     http.beginRequest();
     http.get(finalURL);
     http.endRequest();
@@ -171,8 +161,7 @@ void readapi() {
       const float temp = obj["main"]["temp"];
       const float humidity = obj["main"]["humidity"];
 
-      // 以下是显示信息的代码，依赖于你如何连接LCD等
-      // 例如，使用lcd.print()显示信息
+    
       Serial.println(description);
       Serial.println(temp);
       Serial.println(humidity);
