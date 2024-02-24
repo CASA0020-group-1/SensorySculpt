@@ -46,14 +46,11 @@ float mapFloat(float x, float in_min, float in_max, float out_min, float out_max
 void setup() {
   Serial.begin(115200);
   //startWifi();
-
+  startWifi();
   //Set pins
   pinMode(SENSOR_PIN, INPUT);
-
-
   servo.attach(A0, 500, 2500);  //caibrate servo to PWM signal 500-2500μs
   servo1.attach(A1, 500, 2500);
-    
   //LCD dispkay
   lcd.begin(16, 2);
   lcd.setBacklight(HIGH);
@@ -97,7 +94,6 @@ void loop() {
     if (currentMillis - previousMillis >= interval) {
       previousMillis = currentMillis;
       int randomNumber = random(500, 2501);
-      Serial.println(randomNumber);
       servo1.writeMicroseconds(randomNumber);
     }
   }
