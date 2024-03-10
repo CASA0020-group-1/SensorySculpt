@@ -23,11 +23,13 @@ int pos;
 float db;
 float temp;
 float humidity;
-const int speed = 1200;
+const int speed = 1385;
 const int eepromAddress = 0;
 unsigned long previousMillis = 0;  // random number time
 unsigned long moveMillis = 0;      // servo move time
 unsigned long dbCheckMillis = 0;
+unsigned long dataCheckMillis = 0;
+const long dataInterval = 1000;
 const long interval = 1000;   // per 1s generate 1 random number
 const int moveInterval = 15;  // per 0.015s move servo
 const long dbInterval = 10000;
@@ -96,68 +98,78 @@ void loop() {
 
 
   //get db value every 10s
-  
+
   switch (currentCase) {
-      // Room noise
-      case '1':
-        //lcd print
-        if (currentMillis - dbCheckMillis >= dbInterval) {
+    // Room noise
+    case '1':
+      //lcd print
+      if (currentMillis - dataCheckMillis >= dataInterval) {
+        dataCheckMillis = currentMillis;
+        calculateDb();
+      }
+      if (currentMillis - dbCheckMillis >= dbInterval) {
         dbCheckMillis = currentMillis;
         readapi();
-        calculateDb();
         lcd.setCursor(0, 0);
         lcd.print("Loudness: ");
         Serial.print("Room Noise: ");
         Serial.println(db);
         lcd.print(String(db, 1));
         lcd.print("dB");
-        }
-        break;
+      }
+      break;
 
-      // Temperature
-      case '2':
-        if (currentMillis - dbCheckMillis >= dbInterval) {
+    // Temperature
+    case '2':
+      if (currentMillis - dataCheckMillis >= dataInterval) {
+        dataCheckMillis = currentMillis;
+        getTemperature();
+      }
+      if (currentMillis - dbCheckMillis >= dbInterval) {
         dbCheckMillis = currentMillis;
         readapi();
         lcd.clear();
-        Serial.println(getTemperature());
+
         lcd.setCursor(0, 0);
         lcd.print("Temperature: ");
         Serial.print("Temperature: ");
         lcd.print(String(temp, 1));
         lcd.print("℃");
-        }
-        break;
+      }
+      break;
 
-      // Humidity
-      case '3':
-        if (currentMillis - dbCheckMillis >= dbInterval) {
+    // Humidity
+    case '3':
+      if (currentMillis - dataCheckMillis >= dataInterval) {
+        dataCheckMillis = currentMillis;
+        getHumidity();
+      }
+      if (currentMillis - dbCheckMillis >= dbInterval) {
         dbCheckMillis = currentMillis;
         readapi();
         lcd.clear();
-        Serial.println(getHumidity());
         lcd.setCursor(0, 0);
         lcd.print("Humidity: ");
         Serial.print("Humidity: ");
         lcd.print(String(humidity));
-        }
-        break;
-      // Weather description
-      case '4':
-        //lcd print
-        if (currentMillis - dbCheckMillis >= dbInterval) {
+      }
+      break;
+    // Weather description
+    case '4':
+      //lcd print
+      if (currentMillis - dbCheckMillis >= dbInterval) {
         dbCheckMillis = currentMillis;
         readapi();
         lcd.clear();
-        
+
         Serial.print("Weather: ");
         Serial.println(getWeatherDescription());
         lcd.setCursor(0, 1);
         lcd.print(description);
-        }
-        break;
-    }
-  
+      }
+      break;
+  }
+
 
   // Move servo gradually without blocking
 }
@@ -193,7 +205,7 @@ float calculateDb() {
     // generate random number per second to contrao servo1
     if (currentMillis - previousMillis >= interval) {
       previousMillis = currentMillis;
-      int randomNumber = random(500, 2501);
+      int randomNumber = random(1100, 1900);
       servo1.writeMicroseconds(randomNumber);
     }
   }
@@ -270,7 +282,7 @@ float getTemperature() {
     // generate random number per second to contrao servo1
     if (currentMillis - previousMillis >= interval) {
       previousMillis = currentMillis;
-      int randomNumber = random(500, 2501);
+      int randomNumber = random(1100, 1900);
       servo1.writeMicroseconds(randomNumber);
     }
   }
@@ -296,7 +308,7 @@ float getHumidity() {
     // generate random number per second to contrao servo1
     if (currentMillis - previousMillis >= interval) {
       previousMillis = currentMillis;
-      int randomNumber = random(500, 2501);
+      int randomNumber = random(1100, 1900);
       servo1.writeMicroseconds(randomNumber);
     }
   }
@@ -304,8 +316,8 @@ float getHumidity() {
 }
 
 String getWeatherDescription() {
-    lcd.setCursor(0, 0);
-    servo1.writeMicroseconds(1500);
-    lcd.print("Today Weather:");
+  lcd.setCursor(0, 0);
+  servo1.writeMicroseconds(1500);
+  lcd.print("Today Weather:");
   return description;
 }
