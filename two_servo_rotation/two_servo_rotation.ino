@@ -23,7 +23,7 @@ int pos;
 float db;
 float temp;
 float humidity;
-const int speed = 1385;
+const int speed = 1200;
 const int eepromAddress = 0;
 unsigned long previousMillis = 0;  // random number time
 unsigned long moveMillis = 0;      // servo move time
@@ -70,6 +70,7 @@ void setup() {
 
 void loop() {
   //avoid block
+  
   unsigned long currentMillis = millis();
 
   //underneath servo move
@@ -110,6 +111,7 @@ void loop() {
       if (currentMillis - dbCheckMillis >= dbInterval) {
         dbCheckMillis = currentMillis;
         readapi();
+        lcd.clear();
         lcd.setCursor(0, 0);
         lcd.print("Loudness: ");
         Serial.print("Room Noise: ");
@@ -131,9 +133,9 @@ void loop() {
         lcd.clear();
 
         lcd.setCursor(0, 0);
-        lcd.print("Temperature: ");
+        lcd.print("Temperature:");
         Serial.print("Temperature: ");
-        lcd.print(String(temp, 1));
+        lcd.print(String(temp));
         lcd.print("℃");
       }
       break;
@@ -166,6 +168,7 @@ void loop() {
         Serial.println(getWeatherDescription());
         lcd.setCursor(0, 1);
         lcd.print(description);
+        lcd.print("              ");
       }
       break;
   }
@@ -190,17 +193,17 @@ float calculateDb() {
   //upper servo rotation function
   if (db < 40) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: Rest");
+    lcd.print("Status: Rest         ");
     //SERVO FUNCTION: stop
     servo1.writeMicroseconds(1500);  //servo stop
-  } else if (db >= 40 && db < 59) {
+  } else if (db >= 40 && db < 60) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: Work");
+    lcd.print("Status: Work           ");
     //SERVO Mode: circle rotation
     servo1.writeMicroseconds(speed);
-  } else if (db >= 59) {
+  } else if (db >= 60) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: Noisy");
+    lcd.print("Status: Noisy              ");
     //servo mode: random
     // generate random number per second to contrao servo1
     if (currentMillis - previousMillis >= interval) {
@@ -267,17 +270,17 @@ float getTemperature() {
   unsigned long currentMillis = millis();
   if (temp < 12) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: Low");
+    lcd.print("Status: Cold          ");
     //SERVO FUNCTION: stop
     servo1.writeMicroseconds(1500);  //servo stop
   } else if (temp >= 12 && temp < 25) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: Cozy");
+    lcd.print("Status: Pleasant          ");
     //SERVO Mode: circle rotation
     servo1.writeMicroseconds(speed);
   } else if (temp >= 25) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: High");
+    lcd.print("Status: Hot             ");
     //servo mode: random
     // generate random number per second to contrao servo1
     if (currentMillis - previousMillis >= interval) {
@@ -291,19 +294,19 @@ float getTemperature() {
 
 float getHumidity() {
   unsigned long currentMillis = millis();
-  if (humidity < 60) {
+  if (humidity < 30) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: Low");
+    lcd.print("Status: Low            ");
     //SERVO FUNCTION: stop
     servo1.writeMicroseconds(1500);  //servo stop
-  } else if (humidity >= 60 && humidity < 90) {
+  } else if (humidity >= 30 && humidity < 60) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: Cozy");
+    lcd.print("Status:Pleasant          ");
     //SERVO Mode: circle rotation
     servo1.writeMicroseconds(speed);
-  } else if (humidity >= 90) {
+  } else if (humidity >= 60) {
     lcd.setCursor(0, 1);
-    lcd.print("Status: High");
+    lcd.print("Status: High          ");
     //servo mode: random
     // generate random number per second to contrao servo1
     if (currentMillis - previousMillis >= interval) {
