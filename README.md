@@ -42,8 +42,10 @@ This
 We tried multiple iterations of pattern face, sand substrate, and pattern tracer materals before we settled on our current device. Considering consumer reviews of the [sisyphus table](https://sisyphus-industries.com/shop/) prompted us to weigh pattern clarity and noise levels above most other elements.  
 
 #### Materials + Attempts 
-- acrylic face <img src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/ea5c5818-ab2c-4427-8a51-8bc4adfbdd46" width="200">
-- wood face <img src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/66e0a0b0-78f4-4e38-b1db-681e923f5b9e" width="200">
+- acrylic face
+  <img src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/ea5c5818-ab2c-4427-8a51-8bc4adfbdd46" width="200">
+- wood face
+  <img src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/66e0a0b0-78f4-4e38-b1db-681e923f5b9e" width="200">
 - [coin magnet](https://www.amazon.co.uk/dp/B09W8R43Q8?ref=ppx_pop_mob_ap_share&th=1)
 - [ball magnet] (https://www.amazon.co.uk/dp/B081SPMJ97?ref=ppx_pop_mob_ap_share&th=1)
 - [iron filings] (https://www.amazon.co.uk/dp/B007JTMVD4?starsLeft=1&ref_=cm_sw_r_cso_wa_apin_dp_RMVPF1YZPGKMDCGC78PR&th=1)
