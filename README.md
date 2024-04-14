@@ -27,21 +27,21 @@ Overall, our SensorySculpt device
 3) reads user commands from the APP and
 4) visualises data in real-time through the lens of pre-determined mode thresholds.​
    
-### Follow the Schematic 
+### 🔸 Follow the Schematic 
 Use the following schematic to set up the servos, screen, and noise sensor. The noise sensor works by ...  
 <img width="300" alt="servo, sensor, led schematic" src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/42c0abd6-7dde-4c09-9f27-c51c699ba884">
 
 
 
-### Create your Enclosure
+### 🔸 Create your Enclosure
 - File available here 
 - Bend the plywood and stain it 
 This 
 
-### Select your Pattern Creation Materials
+### 🔸 Select your Pattern Creation Materials
 We tried multiple iterations of pattern face, sand substrate, and pattern tracer materals before we settled on our current device. Considering consumer reviews of the [sisyphus table](https://sisyphus-industries.com/shop/) prompted us to weigh pattern clarity and noise levels above most other elements.  
 
-### Materials + Attempts 
+#### Materials + Attempts 
 - acrylic face <img src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/ea5c5818-ab2c-4427-8a51-8bc4adfbdd46" width="200">
 - wood face <img src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/66e0a0b0-78f4-4e38-b1db-681e923f5b9e" width="200">
 - [coin magnet](https://www.amazon.co.uk/dp/B09W8R43Q8?ref=ppx_pop_mob_ap_share&th=1)
