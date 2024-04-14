@@ -35,7 +35,7 @@ Use the following schematic to set up the servos, screen, and noise sensor.
 We created our enclosure by bending several boards of plywood and lasercutting the pattern face. Our initial test prototype used cardboard fashioned into a lid, and this worked quite well! If you're using wood, be sure to stain it to give your final product a more refined appearance; we used a walnut tone.
 
 ### 🔸 Select your Pattern Creation Materials
-We tried multiple iterations of pattern face, sand substrate, and pattern tracer materals before we settled on our current device (Attempt 4). Considering consumer reviews of the [sisyphus table](https://sisyphus-industries.com/shop/) prompted us to weigh pattern clarity and noise levels above most other elements.  
+We tried multiple iterations of pattern face, sand substrate, and pattern tracer materals before we settled on our current device. Considering consumer reviews of the [sisyphus table](https://sisyphus-industries.com/shop/) prompted us to weigh pattern clarity and noise levels above most other elements.  
 
 #### Materials + Attempts 
 - acrylic face
@@ -51,7 +51,9 @@ We tried multiple iterations of pattern face, sand substrate, and pattern tracer
 - [iron filings](https://www.amazon.co.uk/dp/B007JTMVD4?starsLeft=1&ref_=cm_sw_r_cso_wa_apin_dp_RMVPF1YZPGKMDCGC78PR&th=1)
 - [fine silica sand](https://amzn.eu/d/1xmJNqX)
 
-<img width="400" alt="attempts table" src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/56ac24cd-8226-40f5-acb5-1017824675b1">
+<img width="600" alt="attempts table" src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/56ac24cd-8226-40f5-acb5-1017824675b1">
+
+We ultimately proceeded with the iron filings + wood face – attempt 4. 
 
 > [!TIP]
 > While it is tempting (and satisfying) to fill the entire pattern face with sand, this results in markedly worse pattern clarity across attempts and is a little messy to clean up. An appropriate amount of sand will allow you to still see the pattern face through the sand. 
