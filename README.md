@@ -32,7 +32,12 @@ Use the following schematic to set up the servos, screen, and noise sensor.
 > The noise sensor is pre-calibrated and decibel value is linear with its output voltage. This results in a super simple 'plug-and-play' implementation.
 
 ### 🔸 Create your Enclosure
-We created our enclosure by bending several boards of plywood and lasercutting the pattern face. Our initial test prototype used cardboard fashioned into a lid, and this worked quite well! If you're using wood, be sure to stain it to give your final product a more refined appearance; we used a walnut tone.
+We created our enclosure by bending several boards of plywood and lasercutting the pattern face. Our initial test prototype used cardboard fashioned into a lid, and this worked surprisingly well! If you're using wood, be sure to stain it to give your final product a more refined appearance; we used a walnut tone.
+
+> Easy diy cardboard enclosure 
+
+<img width="300" alt="image" src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/ae32f2bb-68c6-41ab-b7fa-c02d942a7513">
+
 
 ### 🔸 Select your Pattern Creation Materials
 We tried multiple iterations of pattern face, sand substrate, and pattern tracer materals before we settled on our current device. Considering consumer reviews of the [sisyphus table](https://sisyphus-industries.com/shop/) prompted us to weigh pattern clarity and noise levels above most other elements.  
@@ -56,9 +61,9 @@ We tried multiple iterations of pattern face, sand substrate, and pattern tracer
 We ultimately proceeded with the iron filings + wood face – attempt 4. 
 
 > [!TIP]
-> While it is tempting (and satisfying) to fill the entire pattern face with sand, this results in markedly worse pattern clarity across attempts and is a little messy to clean up. An appropriate amount of sand will allow you to still see the pattern face through the sand. 
-
-<img width="200" alt="quantity of sand" src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/ca0de091-0901-4b22-9854-cb1ccbd58d38">
+> While it is tempting (and satisfying) to fill the entire pattern face with sand, this results in markedly worse pattern clarity across attempts and is a little messy to clean up. An appropriate amount of sand will allow you to still see the pattern face through the sand.
+> 
+><img width="200" alt="quantity of sand" src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/ca0de091-0901-4b22-9854-cb1ccbd58d38">
 
 
 ## 💫 Step 2: Flash the Board with the Rotation Software
