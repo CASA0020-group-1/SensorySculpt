@@ -80,10 +80,10 @@ https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/5e9fdb4e-0f51
 Notes about how to use the system. Our product overview video, leaflet information guide, are available [here](https://drive.google.com/drive/folders/1PVUKZVuuEFIjHochCqNxEP5Qj6Y1M1UK) 
 
 ## 🚀 Additional Explorations 
-### Pattern Creation
+### 🔹 Pattern Creation
 The most common method of these sand-based visualization devices is using an x,y plotter. This allows the most flexibility and creativity in pattern creation, and we hope to develop that feature with investment. There are build tutorials for the x,y plotter [here](https://www.thingiverse.com/thing:248009). With this possibility, you can easily explore custom patterns.
 
-### Sand Colours 
+### 🔹 Sand Colours 
 Using sand with various glittery mica powders can create a rather stunning visual effect, as seen in the Oasis device [here](https://youtube.com/shorts/F3zMZAem-_E?feature=shared).
 
 ## ✍️ Team Members
