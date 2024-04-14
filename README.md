@@ -62,7 +62,7 @@ We ultimately proceeded with the iron filings + wood face – attempt 4.
 
 
 ## 💫 Step 2: Flash the Board with the Rotation Software
-The pattern creation software is available here. 
+The pattern creation software is available in `two_servo_rotation.ino`. This code can create three patterns, each corresponding with different ambient noise levels. This presents as a visual metaphor for the influence of noise levels on focus and productivity, where louder noise levels correspond with a more dynamic pattern.
 
 ### Pattern / Visual Feedback Guide  
 <img width="483" alt="image" src="https://github.com/CASA0020-group-1/SensorySculpt/assets/127933946/5c8d787a-d9c2-4861-8a42-b68cbcb4b330">
